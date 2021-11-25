@@ -1,0 +1,56 @@
+﻿<Window x:Class="Jbh.ListBloodPressureWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Jbh"
+        mc:Ignorable="d"
+         Title="Blood pressure readings" Height="600" Width="1000" Icon="JH Aramis bleu reference.ico" ResizeMode="CanResize" WindowStartupLocation="CenterScreen" ShowInTaskbar="False">
+    <Window.Resources>
+        <!--If this listviewitem style is not set then all cell contents within the listview will left-align-->
+        <Style TargetType="{x:Type ListViewItem}">
+            <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+        </Style>
+        <!--Style for the column header cells-->
+        <Style TargetType="{x:Type GridViewColumnHeader}">
+            <Setter Property="HorizontalContentAlignment" Value="Left"/>
+            <Setter Property="Padding" Value="4"/>
+            <!--<Setter Property="Background" Value="Ivory"/>-->
+            <Setter Property="FontWeight" Value="Medium"/>
+        </Style>
+        <DataTemplate x:Key="templateDate">
+            <TextBlock Text="{Binding Date}"/>
+        </DataTemplate>
+        <DataTemplate x:Key="templateSystolic">
+            <TextBlock Text="{Binding Systolic}" TextAlignment="Right"/>
+        </DataTemplate>
+        <DataTemplate x:Key="templateDiastolic">
+            <TextBlock Text="{Binding Diastolic}" TextAlignment="Right"/>
+        </DataTemplate>
+        <DataTemplate x:Key="templatePulse">
+            <TextBlock Text="{Binding Pulse}" TextAlignment="Right"/>
+        </DataTemplate>
+    </Window.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <DockPanel LastChildFill="False">
+            <Button x:Name="buttonAdd" Margin="8 3" Padding="8 3" Width="60" Click="ButtonAdd_Click">Add</Button>
+            <Button x:Name="buttonEdit" Margin="8 3" Padding="8 3" Width="60" IsEnabled="False" Click="ButtonEdit_Click">Edit</Button>
+            <Button x:Name="buttonDelete" Margin="8 3" Padding="8 3" Width="60" IsEnabled="False" Click="ButtonDelete_Click">Delete</Button>
+            <Button Margin="8 3" Padding="8 3" Width="60" DockPanel.Dock="Right" FontWeight="Bold" Click="ButtonCloseClick">Close</Button>
+        </DockPanel>
+        <ListView x:Name="listviewData" Grid.Row="1" SelectionChanged="ListviewSelectionChanged">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Width="Auto" Header="Date" CellTemplate="{StaticResource templateDate}"></GridViewColumn>
+                    <GridViewColumn Width="Auto" Header="Systolic" CellTemplate="{StaticResource templateSystolic}"></GridViewColumn>
+                    <GridViewColumn Width="Auto" Header="Diastolic" CellTemplate="{StaticResource templateDiastolic}"></GridViewColumn>
+                    <GridViewColumn Width="Auto" Header="Pulse" CellTemplate="{StaticResource templatePulse}"></GridViewColumn>
+                </GridView>
+            </ListView.View>
+        </ListView>
+    </Grid>
+</Window>

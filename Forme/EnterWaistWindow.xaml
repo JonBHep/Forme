@@ -1,0 +1,31 @@
+﻿<Window x:Class="Jbh.EnterWaistWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Jbh"
+        mc:Ignorable="d"
+        Title="Enter waist measurement" Height="300" Width="600" Icon="JH Aramis bleu reference.ico" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" ShowInTaskbar="False">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <TextBlock Margin="12" FontWeight="Medium">Date</TextBlock>
+        <TextBlock Margin="12" FontWeight="Medium" Grid.Row="1">Waist</TextBlock>
+        <DatePicker x:Name="datepickerDate" Grid.Column="1" Margin="12" HorizontalAlignment="Left" SelectedDateChanged="datepickerDate_SelectedDateChanged"></DatePicker>
+        <StackPanel Orientation="Horizontal" Grid.Column="1" Grid.Row="1">
+            <TextBox x:Name="textboxCentimetres" Margin="12" Width="40" HorizontalAlignment="Left" VerticalAlignment="Top" TextChanged="textboxCentimetres_TextChanged"></TextBox>
+            <TextBlock Margin="4 12 12 12">centimetres</TextBlock>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Grid.Column="1" Grid.Row="2">
+            <Button x:Name="buttonSave" VerticalAlignment="Top" Margin="12" Padding="12 4" Width="80" FontWeight="Bold" Click="buttonSave_Click" IsEnabled="False">Save</Button>
+            <Button x:Name="buttonCancel" VerticalAlignment="Top" Margin="12" Padding="12 4" Width="80" IsCancel="True" Click="buttonCancel_Click">Cancel</Button>
+        </StackPanel>
+    </Grid>
+</Window>

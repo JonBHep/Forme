@@ -1,0 +1,52 @@
+﻿<Window x:Class="Jbh.FitnessPlotterWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Jbh"
+        mc:Ignorable="d"
+        Title="Plotter" Height="600" Width="1000" Icon="JH Aramis bleu reference.ico" ResizeMode="CanMinimize" WindowStartupLocation="CenterScreen" WindowState="Maximized" ContentRendered="Window_ContentRendered" ShowInTaskbar="False">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition Height="32"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Canvas x:Name="OuterCanvas" Background="Ivory">
+            <ScrollViewer x:Name="GraphScrollViewer"  HorizontalScrollBarVisibility="Visible" VerticalScrollBarVisibility="Hidden">
+                <Canvas x:Name="canvasGraph" Background="Ivory"></Canvas>
+            </ScrollViewer>
+            <Border x:Name="StatisticsBorder" CornerRadius="6" BorderBrush="Black" BorderThickness="1" Height="100" Width="380" Canvas.Left="40" Opacity=".8"  Canvas.Bottom="60" Background="White">
+                <Grid Margin="6">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <TextBlock Grid.Row="0" VerticalAlignment="Center" Margin="4">Latest</TextBlock>
+                    <TextBlock Grid.Row="1" VerticalAlignment="Center" Margin="4">Lowest</TextBlock>
+                    <TextBlock Grid.Row="2" VerticalAlignment="Center" Margin="4">Highest</TextBlock>
+
+                    <TextBlock x:Name="NewValueTB" Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" Margin="4">value</TextBlock>
+                    <TextBlock x:Name="MinValueTB" Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" Margin="4">value</TextBlock>
+                    <TextBlock x:Name="MaxValueTB" Grid.Row="2" Grid.Column="1" VerticalAlignment="Center" Margin="4">value</TextBlock>
+
+                    <TextBlock x:Name="NewDateTB" Grid.Row="0" Grid.Column="2" VerticalAlignment="Center" Margin="4">date</TextBlock>
+                    <TextBlock x:Name="MinDateTB" Grid.Row="1" Grid.Column="2" VerticalAlignment="Center" Margin="4">date</TextBlock>
+                    <TextBlock x:Name="MaxDateTB" Grid.Row="2" Grid.Column="2" VerticalAlignment="Center" Margin="4">date</TextBlock>
+                </Grid>
+            </Border>
+        </Canvas>
+        <DockPanel Grid.Row="1" LastChildFill="False">
+            <Button x:Name="buttonClose" DockPanel.Dock="Right" FontWeight="Bold" Padding="12 2" Margin="4,4,16,0" Click="ButtonClose_Click" Height="24" VerticalAlignment="Top">Close</Button>
+            <Button x:Name="buttonPlotWeight" Padding="12 2" Margin="4" Click="ButtonPlotWeight_Click" >Weight</Button>
+            <Button x:Name="buttonPlotWaist" Padding="12 2" Margin="4" Click="buttonPlotWaist_Click">Waist</Button>
+            <Button x:Name="buttonPlotBloodPressure" Padding="12 2" Margin="4" Click="buttonPlotBloodPressure_Click">Blood pressure</Button>
+
+        </DockPanel>
+    </Grid>
+</Window>

@@ -1,0 +1,36 @@
+﻿<Window x:Class="Jbh.EnterBloodPressureWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Jbh"
+        mc:Ignorable="d"
+        Title="Enter blood pressure" Height="300" Width="600" Icon="JH Aramis bleu reference.ico" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" ShowInTaskbar="False">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <TextBlock Margin="12" FontWeight="Medium">Date</TextBlock>
+        <TextBlock Margin="12" FontWeight="Medium" Grid.Row="1">Pressure</TextBlock>
+        <TextBlock Margin="12" FontWeight="Medium" Grid.Row="2">Pulse</TextBlock>
+        <DatePicker x:Name="datepickerDate" Grid.Column="1" Margin="12" HorizontalAlignment="Left" SelectedDateChanged="datepickerDate_SelectedDateChanged"></DatePicker>
+        <StackPanel Orientation="Horizontal" Grid.Column="1" Grid.Row="1">
+            <TextBlock Margin="12">Systolic</TextBlock>
+            <TextBox x:Name="textboxSystolic" Margin="12" Width="40" VerticalAlignment="Top" TextChanged="textboxSystolic_TextChanged"></TextBox>
+            <TextBlock Margin="12">Diastolic</TextBlock>
+            <TextBox x:Name="textboxDiastolic" Margin="12" Width="40" VerticalAlignment="Top" TextChanged="textboxDiastolic_TextChanged"></TextBox>
+        </StackPanel>
+        <TextBox x:Name="textboxPulse" Grid.Column="1" Grid.Row="2" Margin="12" Width="40" HorizontalAlignment="Left" VerticalAlignment="Top" TextChanged="textboxPulse_TextChanged"></TextBox>
+        <StackPanel Orientation="Horizontal" Grid.Column="1" Grid.Row="3">
+            <Button x:Name="buttonSave" VerticalAlignment="Top" Margin="12" Padding="12 4" Width="80" FontWeight="Bold" IsEnabled="False" Click="buttonSave_Click">Save</Button>
+            <Button VerticalAlignment="Top" Margin="12" Padding="12 4" Width="80" Click="Button_Click" IsCancel="True">Cancel</Button>
+        </StackPanel>
+    </Grid>
+</Window>

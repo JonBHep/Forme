@@ -1,0 +1,64 @@
+﻿<Window x:Class="Jbh.BaladeWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Jbh"
+        mc:Ignorable="d"
+        Title="Velo - day's details" Height="232" Width="800" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" Icon="JH Aramis bleu reference.ico" ContentRendered="Window_ContentRendered" FontFamily="Consolas" FontSize="14" ShowInTaskbar="False">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="32"></RowDefinition>
+            <RowDefinition Height="32"></RowDefinition>
+            <RowDefinition Height="32"></RowDefinition>
+            <RowDefinition Height="32"></RowDefinition>
+            <RowDefinition Height="32"></RowDefinition>
+            <RowDefinition Height="32"></RowDefinition>
+        </Grid.RowDefinitions>
+        <StackPanel Orientation="Horizontal" >
+            <TextBlock Margin="12 0 0 0" VerticalAlignment="Center" Foreground="DarkSeaGreen" >Date</TextBlock>
+            <Button x:Name="btnMinus" Height="24" Width="24" Margin="6 0"  Click="BtnMinus_Click" ToolTip="1 day earlier">
+                <Polygon Fill="SaddleBrown" >
+                    <Polygon.Points>
+                        <Point X="6" Y="0"/>
+                        <Point X="0" Y="5"/>
+                        <Point X="6" Y="10"/>
+                    </Polygon.Points>
+                </Polygon>
+            </Button>
+            <Button x:Name="btnPlus" Height="24" Width="24" Margin="6 0" Click="BtnPlus_Click" ToolTip="1 day later">
+                <Polygon Fill="SaddleBrown" >
+                    <Polygon.Points>
+                        <Point X="0" Y="0"/>
+                        <Point X="6" Y="5"/>
+                        <Point X="0" Y="10"/>
+                    </Polygon.Points>
+                </Polygon>
+            </Button>
+            <local:DateEntryTextbox x:Name="DateInputBox" Margin="12 0 0 0" VerticalAlignment="Center"></local:DateEntryTextbox>
+            <RadioButton x:Name="WalkRadio" Margin="12 0 0 0" VerticalAlignment="Center" Foreground="DarkSeaGreen">Walk</RadioButton>
+            <RadioButton x:Name="RideRadio" Margin="12 0 0 0" VerticalAlignment="Center" Foreground="DarkSeaGreen">Cycle</RadioButton>
+        </StackPanel>
+        <DockPanel Grid.Row="1">
+            <TextBlock Margin="12 0 0 0" VerticalAlignment="Center" Foreground="DarkSeaGreen">Route or location</TextBlock>
+            <TextBox x:Name="LocnInputBox" Margin="12 0 6 0" VerticalAlignment="Center" Height="22"  VerticalContentAlignment="Center"  GotFocus="InputBox_GotFocus"></TextBox>
+        </DockPanel>
+        <DockPanel Grid.Row="2">
+            <TextBlock Margin="12 0 0 0" VerticalAlignment="Center" Foreground="DarkSeaGreen">Group</TextBlock>
+            <ComboBox x:Name="GroupComboBox" VerticalAlignment="Center" Margin="12 0 6 0" IsEditable="True" ></ComboBox>
+        </DockPanel>
+        <StackPanel Orientation="Horizontal" Grid.Row="3">
+            <TextBlock Margin="12 0 0 0" VerticalAlignment="Center" Foreground="DarkSeaGreen">Distance (Km)</TextBlock>
+            <TextBox x:Name="DistJInputBox" Margin="12 0 0 0" VerticalAlignment="Center" Height="22" Width="50" VerticalContentAlignment="Center" GotFocus="InputBox_GotFocus">0.0</TextBox>
+        </StackPanel>
+
+        <DockPanel Grid.Row="4">
+            <TextBlock Margin="12 0 0 0" VerticalAlignment="Center" Foreground="DarkSeaGreen">Difficulty</TextBlock>
+            <ComboBox x:Name="DifficultyComboBox" VerticalAlignment="Center" Margin="12 0 6 0" ></ComboBox>
+        </DockPanel>
+        <DockPanel Grid.Row="5" LastChildFill="False">
+            <Button Margin="12 0 0 0" Padding="6 3" VerticalAlignment="Center" Width="60" Click="Button_Click">OK</Button>
+            <Button Margin="12 0 0 0" Padding="6 3" VerticalAlignment="Center" Width="60" IsCancel="True">Cancel</Button>
+        </DockPanel>
+    </Grid>
+</Window>

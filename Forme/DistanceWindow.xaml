@@ -1,0 +1,28 @@
+﻿<Window x:Class="Jbh.DistanceWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Jbh"
+        mc:Ignorable="d"
+        Title="Velo - Rolling daily distance cycled" Height="500" Width="1000" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" Icon="JH Aramis bleu reference.ico" Loaded="Window_Loaded" ContentRendered="Window_ContentRendered" FontFamily="Consolas" ShowInTaskbar="False" >
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <DockPanel>
+            <Button Width="80" Padding="12 4" Margin="4" DockPanel.Dock="Right" IsCancel="True">OK</Button>
+            <TextBlock  FontSize="30" FontFamily="AR Essence" Margin="12 0 0 0" Foreground="DarkSeaGreen">Distance and Frequency</TextBlock>
+            <TextBlock  FontSize="20" VerticalAlignment="Center" FontFamily="AR Essence" Margin="12 0 0 0" Foreground="DarkSeaGreen">Upper chart: Km per day Lower chart: rides per week</TextBlock>
+            <TextBlock x:Name="YearBloc"  FontSize="14" VerticalAlignment="Center" Margin="12 0 0 0" Foreground="Red">Rolling year</TextBlock>
+            <TextBlock x:Name="bloc90"  FontSize="14" VerticalAlignment="Center" Margin="12 0 0 0" Foreground="Blue">Rolling 90 days</TextBlock>
+            <TextBlock x:Name="bloc30"  FontSize="14" VerticalAlignment="Center" Margin="12 0 0 0" Foreground="DarkCyan">Rolling 30 days</TextBlock>
+            <TextBlock  FontSize="14" VerticalAlignment="Center" Margin="12 0 0 0" Foreground="Black">Dotted lines represent latest value</TextBlock>
+        </DockPanel>
+        <ScrollViewer x:Name="ChartScrollViewer" Grid.Row="1" HorizontalScrollBarVisibility="Auto">
+            <Canvas x:Name="ChartCanvas" Background="AntiqueWhite" Margin="3"></Canvas>
+        </ScrollViewer>
+
+    </Grid>
+</Window>

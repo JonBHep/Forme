@@ -1,0 +1,116 @@
+﻿<Window x:Class="Jbh.VeloMainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Jbh"
+        mc:Ignorable="d"
+        Title="Velo" Height="500" Width="1000" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" Icon="JH Aramis bleu reference.ico" Loaded="Window_Loaded" ContentRendered="Window_ContentRendered" FontFamily="Consolas" Closing="Window_Closing" ShowInTaskbar="False">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition Height="40"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <StackPanel Orientation="Horizontal">
+            <TextBlock  FontSize="30" FontFamily="AR Essence" Margin="12 0 0 0" Foreground="DarkSeaGreen">Cycling and walking distance</TextBlock>
+            <TextBlock x:Name="PlotTextBlock" FontSize="20" FontFamily="AR Essence" Margin="100 0 0 0" Foreground="SeaGreen" VerticalAlignment="Center">Trips</TextBlock>
+            <Button x:Name="PlotButton" Margin="100,0,0,0" ToolTip="Display cumulative distance ridden" VerticalAlignment="Center" Padding="12 4" Click="PlotButton_Click">Cumulative distance</Button>
+        </StackPanel>
+
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition></RowDefinition>
+                <RowDefinition Height="40"></RowDefinition>
+                <RowDefinition Height="40"></RowDefinition>
+            </Grid.RowDefinitions>
+            <ScrollViewer x:Name="ChartScrollViewer" Margin="3" VerticalAlignment="Stretch" Background="WhiteSmoke"  HorizontalScrollBarVisibility="Visible" VerticalScrollBarVisibility="Hidden" ScrollChanged="ChartScrollViewer_ScrollChanged">
+                <Canvas x:Name="ChartCanvas" Margin="0" VerticalAlignment="Stretch" Width="600" Background="Black"/>
+            </ScrollViewer>
+            <StackPanel Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Orientation="Horizontal">
+                <TextBlock VerticalAlignment="Center" Margin="12 0 0 0" Foreground="DarkSeaGreen">CYCLING</TextBlock>
+                <Border Margin="12 0 0 0" BorderBrush="DarkSeaGreen" BorderThickness="1" VerticalAlignment="Center" CornerRadius="3">
+                    <TextBlock x:Name="CountTbkVelo" Margin="6 3 6 3" VerticalAlignment="Center" Foreground="SeaGreen" FontSize="14"><Run Text="X"/></TextBlock>
+                </Border>
+
+                <Border Margin="12 0 0 0" BorderBrush="DarkSeaGreen" BorderThickness="1" VerticalAlignment="Center" CornerRadius="3">
+                    <TextBlock x:Name="MaximumTbkVelo" Margin="6 3 6 3" VerticalAlignment="Center" Foreground="SeaGreen" FontSize="14"><Run Text="X"/></TextBlock>
+                </Border>
+
+                <Border Margin="12 0 0 0" BorderBrush="DarkSeaGreen" BorderThickness="1" VerticalAlignment="Center" CornerRadius="3">
+                    <TextBlock x:Name="MeanTbkVelo" Margin="6 3 6 3" VerticalAlignment="Center" Foreground="SeaGreen" FontSize="14"><Run Text="X"/></TextBlock>
+                </Border>
+
+                <Border Margin="12 0 0 0" BorderBrush="DarkSeaGreen" BorderThickness="1" VerticalAlignment="Center" CornerRadius="3">
+                    <TextBlock x:Name="KmPerDayTbkVelo" Margin="6 3 6 3" VerticalAlignment="Center" Foreground="SeaGreen" FontSize="14"><Run Text="X"/></TextBlock>
+                </Border>
+
+                <!--<Border Margin="12 0 0 0" BorderBrush="DarkSeaGreen" BorderThickness="1" VerticalAlignment="Center" CornerRadius="3">
+                    <DockPanel>
+                        <Ellipse x:Name="PerWeekFlag" Margin="6 0 0 0" VerticalAlignment="Center" Fill="SeaGreen" Width="14" Height="14" ></Ellipse>
+                        <TextBlock x:Name="KmPerWeekTbkVelo" Margin="6 3 6 3" VerticalAlignment="Center" Foreground="SeaGreen" FontSize="14"><Run Text="X"/></TextBlock>
+                    </DockPanel>
+                    
+                </Border>-->
+
+                <Border Margin="12 0 0 0" BorderBrush="DarkSeaGreen" BorderThickness="1" VerticalAlignment="Center" CornerRadius="3">
+                    <DockPanel>
+                        <Ellipse x:Name="PerMonthFlagVelo" Margin="6 0 0 0" VerticalAlignment="Center" Fill="SeaGreen" Width="14" Height="14" ></Ellipse>
+                        <TextBlock x:Name="KmPerMonthTbkVelo" Margin="6 3 6 3" VerticalAlignment="Center" Foreground="SeaGreen" FontSize="14"><Run Text="X"/></TextBlock>
+                    </DockPanel>
+                </Border>
+
+            </StackPanel>
+
+            <StackPanel Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Orientation="Horizontal">
+                <TextBlock VerticalAlignment="Center" Margin="12 0 0 0" Foreground="DarkSeaGreen">WALKING</TextBlock>
+                <Border Margin="12 0 0 0" BorderBrush="DarkSeaGreen" BorderThickness="1" VerticalAlignment="Center" CornerRadius="3">
+                    <TextBlock x:Name="CountTbkPied" Margin="6 3 6 3" VerticalAlignment="Center" Foreground="SeaGreen" FontSize="14"><Run Text="X"/></TextBlock>
+                </Border>
+
+                <Border Margin="12 0 0 0" BorderBrush="DarkSeaGreen" BorderThickness="1" VerticalAlignment="Center" CornerRadius="3">
+                    <TextBlock x:Name="MaximumTbkPied" Margin="6 3 6 3" VerticalAlignment="Center" Foreground="SeaGreen" FontSize="14"><Run Text="X"/></TextBlock>
+                </Border>
+
+                <Border Margin="12 0 0 0" BorderBrush="DarkSeaGreen" BorderThickness="1" VerticalAlignment="Center" CornerRadius="3">
+                    <TextBlock x:Name="MeanTbkPied" Margin="6 3 6 3" VerticalAlignment="Center" Foreground="SeaGreen" FontSize="14"><Run Text="X"/></TextBlock>
+                </Border>
+
+                <Border Margin="12 0 0 0" BorderBrush="DarkSeaGreen" BorderThickness="1" VerticalAlignment="Center" CornerRadius="3">
+                    <TextBlock x:Name="KmPerDayTbkPied" Margin="6 3 6 3" VerticalAlignment="Center" Foreground="SeaGreen" FontSize="14"><Run Text="X"/></TextBlock>
+                </Border>
+
+                <!--<Border Margin="12 0 0 0" BorderBrush="DarkSeaGreen" BorderThickness="1" VerticalAlignment="Center" CornerRadius="3">
+                    <DockPanel>
+                        <Ellipse x:Name="PerWeekFlagPied" Margin="6 0 0 0" VerticalAlignment="Center" Fill="SeaGreen" Width="14" Height="14" ></Ellipse>
+                        <TextBlock x:Name="KmPerWeekTbkPied" Margin="6 3 6 3" VerticalAlignment="Center" Foreground="SeaGreen" FontSize="14"><Run Text="X"/></TextBlock>
+                    </DockPanel>
+
+                </Border>-->
+
+                <Border Margin="12 0 0 0" BorderBrush="DarkSeaGreen" BorderThickness="1" VerticalAlignment="Center" CornerRadius="3">
+                    <DockPanel>
+                        <Ellipse x:Name="PerMonthFlagPied" Margin="6 0 0 0" VerticalAlignment="Center" Fill="SeaGreen" Width="14" Height="14" ></Ellipse>
+                        <TextBlock x:Name="KmPerMonthTbkPied" Margin="6 3 6 3" VerticalAlignment="Center" Foreground="SeaGreen" FontSize="14"><Run Text="X"/></TextBlock>
+                    </DockPanel>
+                </Border>
+
+            </StackPanel>
+        </Grid>
+
+        <DockPanel Grid.Row="2" LastChildFill="False">
+
+            <TextBlock x:Name="VersionTextBlock" Margin="12 0 0 0" VerticalAlignment="Center">[ver]</TextBlock>
+            <TextBlock x:Name="TodayTextBlock" Margin="12 0 0 0" VerticalAlignment="Center">[ver]</TextBlock>
+
+            <Button Margin="0 0 12 0" DockPanel.Dock="Right" VerticalAlignment="Center" Width="88" Height="26"  ToolTip="Close application" Click="CloseButton_Click" FontWeight="Bold" >Close</Button>
+            <!--<Button Margin="0 0 12 0" DockPanel.Dock="Right" VerticalAlignment="Center" Width="88" Height="26" ToolTip="About Velo" Click="AboutButton_Click">About</Button>-->
+            <!--<Button Margin="0 0 12 0" DockPanel.Dock="Right" VerticalAlignment="Center" Width="88" Height="26" ToolTip="About Velo" Click="GymButton_Click">Gym</Button>-->
+            <Button Margin="0 0 12 0" DockPanel.Dock="Right" VerticalAlignment="Center" Width="88" Height="26" ToolTip="Cycle gear ratios" Click="RatiosButton_Click">Ratios</Button>
+            <Button Margin="0 0 12 0" DockPanel.Dock="Right" VerticalAlignment="Center" Width="88" Height="26" ToolTip="Distance cycled and frequency of rides over time" Click="DistanceButton_Click">Distance</Button>
+            <Button Margin="0 0 12 0" DockPanel.Dock="Right" VerticalAlignment="Center" Width="88" Height="26" ToolTip="Trip statistics by month or group" Click="WeeklyButton_Click">Periods</Button>
+            <Button Margin="0 0 12 0" DockPanel.Dock="Right" VerticalAlignment="Center" Width="88" Height="26" ToolTip="Daily cycle trip statistics" Click="DailyButton_Click">Daily</Button>
+        </DockPanel>
+    </Grid>
+</Window>

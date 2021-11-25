@@ -1,0 +1,61 @@
+﻿<Window x:Class="Jbh.FitnessMainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Jbh"
+        mc:Ignorable="d"
+        Title="Fitness records" Height="300" Width="800" Icon="JH Aramis bleu reference.ico" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" ContentRendered="Window_ContentRendered" Closing="Window_Closing" WindowStyle="None" Background="Transparent" AllowsTransparency="True" ShowInTaskbar="False">
+        <Border BorderBrush="Black" BorderThickness="2" CornerRadius="6" Background="Ivory">
+    <Grid Margin="6">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition Height="40"></RowDefinition>
+        </Grid.RowDefinitions>
+        <TextBlock VerticalAlignment="Center" Margin="8" FontFamily="Permanent Marker" FontSize="22">Fitness records</TextBlock>
+        <Border Grid.Row="1" BorderBrush="Black" BorderThickness="2" CornerRadius="6" Background="MintCream">
+            <Grid Margin="6">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition Width="2*"></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+
+                <StackPanel Orientation="Horizontal" Grid.Row="0" Grid.Column="1">
+                    <Button VerticalAlignment="Center" Background="Honeydew" Foreground="DarkGreen" Margin="12 0 0 0" Padding="26 4" FontWeight="Medium" Click="HeightJButton_Click">Height</Button>
+                    <TextBlock x:Name="HeightJTextBlock" Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" Margin="12 0 0 0" FontWeight="Bold" >Height</TextBlock>
+                </StackPanel>
+
+                <Button Margin="4" Grid.Row="1" FontWeight="Medium" Background="Honeydew" Foreground="DarkGreen" Click="ButtonListWeightJ_Click">Weight</Button>
+                <Button Margin="4" Grid.Row="2" FontWeight="Medium" Background="Honeydew" Foreground="DarkGreen" Click="ButtonListWaistJ_Click">Waist</Button>
+                <Button Margin="4" Grid.Row="3" FontWeight="Medium" Background="Honeydew" Foreground="DarkGreen" Click="ButtonListBloodJ_Click">Blood pressure</Button>
+
+                <TextBlock x:Name="J_WeightValueTextBlock" Grid.Column="1" Grid.Row="1" Margin="12,4" FontWeight="Bold" VerticalAlignment="Center">[value]</TextBlock>
+                <TextBlock x:Name="J_WaistValueTextBlock" Grid.Column="1" Grid.Row="2" Margin="12 4" FontWeight="Bold" VerticalAlignment="Center">[value]</TextBlock>
+                <TextBlock x:Name="J_BloodPressureValueTextBlock" Grid.Column="1" Grid.Row="3" Margin="12 4" FontWeight="Bold" VerticalAlignment="Center">[value]</TextBlock>
+
+                <TextBlock x:Name="J_WeightDateTextBlock" Grid.Column="2" Grid.Row="1" Margin="12 4" VerticalAlignment="Center">[date]</TextBlock>
+                <TextBlock x:Name="J_WaistDateTextBlock" Grid.Column="2" Grid.Row="2" Margin="12 4" VerticalAlignment="Center">[date]</TextBlock>
+                <TextBlock x:Name="J_BloodPressureDateTextBlock" Grid.Column="2" Grid.Row="3" Margin="12 4" VerticalAlignment="Center">[date]</TextBlock>
+
+                <TextBlock x:Name="WeightAgoTextBlock" Grid.Column="3" Grid.Row="1" Margin="12 4" VerticalAlignment="Center">[date]</TextBlock>
+                <TextBlock x:Name="WaistAgoTextBlock" Grid.Column="3" Grid.Row="2" Margin="12 4" VerticalAlignment="Center">[date]</TextBlock>
+                <TextBlock x:Name="BloodPressureAgoTextBlock" Grid.Column="3" Grid.Row="3" Margin="12 4" VerticalAlignment="Center">[date]</TextBlock>
+
+                <Button Grid.Column="4" Grid.Row="4" VerticalAlignment="Center" HorizontalAlignment="Center" Background="Honeydew" Foreground="DarkGreen" Margin="0 1 4 1" Padding="36 4" FontWeight="Medium" Click="PlotJButton_Click">Charts</Button>
+            </Grid>
+        </Border>
+        <Button Grid.Row="2" VerticalAlignment="Center" FontFamily="Permanent Marker" HorizontalAlignment="Right" Margin="0 0 10 0" Background="NavajoWhite" Foreground="Black" Padding="36 4" FontWeight="Bold" Click="ButtonCloseClick">Close</Button>
+    </Grid>
+    </Border>
+</Window>

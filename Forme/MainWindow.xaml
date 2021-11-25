@@ -1,0 +1,38 @@
+﻿<Window x:Class="Jbh.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Forme"
+        mc:Ignorable="d"
+        Title="Ma forme" Height="220" Width="340" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" Icon="JH Aramis bleu reference.ico">
+    <Window.Resources>
+        <Style TargetType="Button">
+            <Setter Property="Foreground" Value="ForestGreen" ></Setter>
+            <Setter Property="Background" Value="Honeydew"></Setter>
+            <Setter Property="VerticalAlignment" Value="Center"></Setter>
+            <Setter Property="HorizontalAlignment" Value="Center"></Setter>
+            <Setter Property="MinHeight" Value="28"></Setter>
+            <Setter Property="MinWidth" Value="100"></Setter>
+        </Style>
+    </Window.Resources>
+    <Grid Background="MintCream">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"></RowDefinition>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <TextBlock VerticalAlignment="Center" Margin="8 0 0 0" FontFamily="AR Julian" FontSize="24" Foreground="DarkGreen" Grid.ColumnSpan="2" HorizontalAlignment="Center">Fitness data</TextBlock>
+        <Button Grid.Column="0" Grid.Row="1" Click="MeasuresButton_Click">Measures</Button>
+        <Button Grid.Column="1" Grid.Row="1" Click="VeloButton_Click">Cycling</Button>
+        <Button Grid.Column="0" Grid.Row="2" Click="GymButton_Click">Gym</Button>
+        <Button Grid.Column="1" Grid.Row="2" Click="AboutButton_Click">About</Button>
+        <Button Grid.Column="0" Grid.Row="3" Click="BuButton_Click">Bu</Button>
+        <Button Grid.Column="1" Grid.Row="3" IsCancel="True" Click="CloseButton_Click" >Close</Button>
+    </Grid>
+</Window>
