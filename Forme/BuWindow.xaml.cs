@@ -132,16 +132,23 @@ namespace Jbh
             int f = DatesListBox.SelectedIndex;
             int beans = 0;
             DatesListBox.Items.Clear();
-            foreach(int j in buDictionary.Keys)
+            List<int> days = new List<int>();
+            foreach (int j in buDictionary.Keys)
+            {
+                days.Add(j);
+            }
+            days.Sort();
+            days.Reverse();
+            foreach (int j in days)
             {
                 StackPanel panel = new StackPanel() { Orientation = Orientation.Horizontal };
                 TextBlock bloc = new TextBlock() { Text = BuDate.DateStamp(j), FontFamily = new FontFamily("Consolas"),VerticalAlignment = VerticalAlignment.Center };
-                TextBlock sign = new TextBlock() {Width=32 , VerticalAlignment= VerticalAlignment.Center, Background= Brushes.AntiqueWhite, TextAlignment= TextAlignment.Center };
+                TextBlock sign = new TextBlock() {Width=32 , VerticalAlignment= VerticalAlignment.Center, TextAlignment= TextAlignment.Center };
                 beans = BeansAfter(beans, buDictionary[j]);
                 switch (buDictionary[j])
                 {
                     case BuDate.Ivresse.SaisPas: { sign.Text= "s"; sign.FontFamily = new FontFamily("Webdings");sign.FontSize = 14; sign.Foreground = Brushes.Red; break; }
-                    case BuDate.Ivresse.Bu: { sign.Text = "S"; sign.FontFamily = new FontFamily("Wingdings"); sign.FontSize = 16;sign.Foreground = Brushes.BlueViolet; break; }
+                    case BuDate.Ivresse.Bu: { sign.Text = "S"; sign.FontFamily = new FontFamily("Wingdings"); sign.FontSize = 16; sign.Foreground = Brushes.BlueViolet; break; }
                     case BuDate.Ivresse.PasBu: { sign.Text = "r"; sign.FontFamily = new FontFamily("Webdings"); sign.FontSize = 14; sign.Foreground = Brushes.ForestGreen; break; }
                 }
                 panel.Children.Add(bloc);
@@ -175,23 +182,44 @@ namespace Jbh
             {
                 currentcode--;
                 Brush pinceau;
+                Brush outline;
                 if (buDictionary.ContainsKey(currentcode))
                 {
                     switch (buDictionary[currentcode])
                     {
-                        case BuDate.Ivresse.Bu: { pinceau = Brushes.OrangeRed; break; }
-                        case BuDate.Ivresse.PasBu: { pinceau = Brushes.ForestGreen; break; }
-                        default: { pinceau = Brushes.Silver; break; }
+                        case BuDate.Ivresse.Bu: { pinceau = Brushes.Firebrick;outline = Brushes.Brown; break; }
+                        case BuDate.Ivresse.PasBu: { pinceau = Brushes.Aquamarine; outline = Brushes.Black; break; }
+                        default: { pinceau = Brushes.Silver; outline = Brushes.Gainsboro; break; }
                     }
-                    Ellipse elly = new Ellipse() { Width = 16, Height = 16, Fill = pinceau, Margin=new Thickness(2,2,2,2), VerticalAlignment = VerticalAlignment.Center };
-                    DockPanel.SetDock(elly, Dock.Right);
-                    RecentDaysDockPanel.Children.Add(elly);
+                    //Ellipse elly = new Ellipse() { Width = 16, Height = 16, Fill = pinceau, Margin=new Thickness(2,2,2,2), VerticalAlignment = VerticalAlignment.Center };
+                    //DockPanel.SetDock(elly, Dock.Right);
+                    //RecentDaysDockPanel.Children.Add(elly);
+                    Polygon myPolygon = new Polygon();
+                    myPolygon.Stroke = outline;
+                    myPolygon.Fill =pinceau;
+                    myPolygon.StrokeThickness = 1;
+                    myPolygon.VerticalAlignment = VerticalAlignment.Center;
+                    myPolygon.Margin = new Thickness(4, 0, 4, 0);
+                    PointCollection myPointCollection = new PointCollection();
+                    myPointCollection.Add(new Point(0,24));
+                    myPointCollection.Add(new Point(7, 24));
+                    myPointCollection.Add(new Point(7, 7));
+                    myPointCollection.Add(new Point(4.67, 6));
+                    myPointCollection.Add(new Point(4.67, 0));
+                    myPointCollection.Add(new Point(2.33, 0));
+                    myPointCollection.Add(new Point(2.33, 6));
+                    myPointCollection.Add(new Point(0, 7));
+                    myPolygon.Points = myPointCollection;
+                    DockPanel.SetDock(myPolygon, Dock.Right);
+                    RecentDaysDockPanel.Children.Add(myPolygon);
+
                     if (z % 7 == 6)
                     {
                         // week marker 
-                        Rectangle rect = new Rectangle() { Width = 2, Height = 16, Fill = Brushes.DarkSlateGray, Margin = new Thickness(1, 2, 1, 2) };
-                        DockPanel.SetDock(rect, Dock.Right);
-                        RecentDaysDockPanel.Children.Add(rect);
+                        Ellipse elyps=new Ellipse() { Width = 16, Height = 16, Fill = Brushes.Tan, Margin = new Thickness(1, 2, 1, 2) };
+                        //Rectangle rect = new Rectangle() { Width = 16, Height = 16, Fill = Brushes.Tan, Margin = new Thickness(1, 2, 1, 2) };
+                        DockPanel.SetDock(elyps, Dock.Right);
+                        RecentDaysDockPanel.Children.Add(elyps);
                     }
                 }
             }
@@ -201,40 +229,43 @@ namespace Jbh
         {
             whichCanvas.Children.Clear();
             double cheight = whichCanvas.ActualHeight;
+            double topmargin = 8;
+            double usableheight = cheight - (2*topmargin);
+
             double elapsedDays = (DateTime.Today - startDate).TotalDays;
+            double wks = Math.Round(elapsedDays / 7);
+            AllTimeCaptionBloc.Text = $"All time ({wks} weeks) bean balance";
             double dayInterval = 4;
             whichCanvas.Width = dayInterval * elapsedDays;
             (int, int) minimax = PeriodMinMaxBeans(spanDays);
             double tspan = minimax.Item2 - minimax.Item1;
-            double yratio = 0.9 * cheight / tspan;
+            double yratio = usableheight / tspan;
             double prop = minimax.Item2 / tspan;
-            double yorigin = cheight * prop;
-             whichCanvas.Children.Add(new Line() { X1 = 0, X2 = dayInterval * elapsedDays, Y1 = yorigin, Y2 = yorigin, StrokeThickness = 1, Stroke = Brushes.DimGray });
+            double yorigin =topmargin+ usableheight * prop;
+            whichCanvas.Children.Add(new Line() { X1 = 0, X2 = dayInterval * elapsedDays, Y1 = yorigin, Y2 = yorigin, StrokeThickness = 1.5, Stroke = Brushes.CornflowerBlue, StrokeDashArray = { 5, 3 } });
             int firstdate = buDictionary.Keys.First();
+
             double xposition = 0;
-            
             double lastx = 0;
             double lasty = yorigin;
-            int beans=0;
+            int beans = 0;
             foreach (int target in buDictionary.Keys)
             {
+                xposition += dayInterval;
                 beans = 0;
-                int debut = target - (spanDays-1);
+                int debut = target - (spanDays - 1);
                 if (debut < firstdate) { debut = firstdate; }
                 for (int x = debut; x <= target; x++)
                 {
                     beans = BeansAfter(beans, buDictionary[x]);
                 }
                 double thisY = yorigin - (beans * yratio);
-                if (xposition > 0)
-                {
-                    Brush pinceau = (beans < 0) ? Brushes.Red : Brushes.Blue;
-                    whichCanvas.Children.Add(new Line() { X1 = lastx, Y1 = lasty, X2 = xposition, Y2 = thisY, Stroke = Brushes.OrangeRed, StrokeThickness = 1.5 });
-                }
+                Brush pinceau = (beans < 0) ? Brushes.Red : Brushes.Blue;
+                whichCanvas.Children.Add(new Line() { X1 = lastx, Y1 = lasty, X2 = xposition, Y2 = thisY, Stroke = Brushes.OrangeRed, StrokeThickness = 1.5 });
 
                 lastx = xposition;
                 lasty = thisY;
-                xposition += dayInterval;
+
             }
             return beans;
         }

@@ -70,7 +70,7 @@
         </ScrollViewer>
 
         <StackPanel Grid.Column="1" Grid.Row="10" Orientation="Horizontal">
-            <TextBlock Foreground="SaddleBrown" FontFamily="Consolas" Margin="8 3 8 3">All-time bean balance</TextBlock>
+            <TextBlock x:Name="AllTimeCaptionBloc" Foreground="SaddleBrown" FontFamily="Consolas" Margin="8 3 8 3">All-time bean balance</TextBlock>
             <TextBlock x:Name="TotalBalanceTextBlock" Foreground="DarkSlateBlue" FontFamily="Consolas" Margin="8 3 8 3"></TextBlock>
         </StackPanel>
         
