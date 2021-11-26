@@ -22,6 +22,8 @@
             <RowDefinition/>
             <RowDefinition Height="Auto"/>
             <RowDefinition/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition/>
         </Grid.RowDefinitions>
         <TextBlock FontSize="20" Margin="8" VerticalAlignment="Center" FontFamily="Courgette">Drinking</TextBlock>
         <DockPanel Grid.Column="1">
@@ -29,7 +31,7 @@
             <TextBlock x:Name="RubricTextBlock" Margin="8"  VerticalAlignment="Center" TextWrapping="Wrap" FontFamily="Consolas">Blah blah...</TextBlock>
         </DockPanel>
         
-        <ListBox x:Name="DatesListBox" Grid.Row="1" Grid.RowSpan="9" Background="Beige" Margin="4 0 0 4" Width="200" SelectionChanged="DatesListBox_SelectionChanged"></ListBox>
+        <ListBox x:Name="DatesListBox" Grid.Row="1" Grid.RowSpan="11" Background="Beige" Margin="4 0 0 4" Width="200" SelectionChanged="DatesListBox_SelectionChanged"></ListBox>
         <Border Grid.Row="1" Grid.Column="1" BorderBrush="SaddleBrown" BorderThickness="1" CornerRadius="3" x:Name="CycleBorder">
             <DockPanel>
                 <Button Width="72" Height="27" Margin="4 2 8 2" Click="CycleButton_Click">Outcome</Button>
@@ -48,22 +50,31 @@
         <ScrollViewer Grid.Column="1" Grid.Row="5" Margin="3" VerticalAlignment="Stretch" HorizontalScrollBarVisibility="Visible" VerticalScrollBarVisibility="Hidden">
             <Canvas x:Name="WeekCanvas"  Background="Ivory"></Canvas>
         </ScrollViewer>
-
+        
         <StackPanel Grid.Column="1" Grid.Row="6" Orientation="Horizontal">
+            <TextBlock Foreground="SaddleBrown" FontFamily="Consolas" Margin="8 3 8 3">Rolling fortnight bean balance</TextBlock>
+            <TextBlock x:Name="FortnightlyBalanceTextBlock" Foreground="DarkSlateBlue" FontFamily="Consolas" Margin="8 3 8 3"></TextBlock>
+        </StackPanel>
+
+        <ScrollViewer Grid.Column="1" Grid.Row="7" Margin="3" VerticalAlignment="Stretch" HorizontalScrollBarVisibility="Visible" VerticalScrollBarVisibility="Hidden">
+            <Canvas x:Name="FortnightCanvas"  Background="Ivory"></Canvas>
+        </ScrollViewer>
+
+        <StackPanel Grid.Column="1" Grid.Row="8" Orientation="Horizontal">
             <TextBlock Foreground="SaddleBrown" FontFamily="Consolas" Margin="8 3 8 3">Rolling 4-week bean balance</TextBlock>
             <TextBlock x:Name="MonthlyBalanceTextBlock" Foreground="DarkSlateBlue" FontFamily="Consolas" Margin="8 3 8 3"></TextBlock>
         </StackPanel>
         
-        <ScrollViewer Grid.Column="1" Grid.Row="7" Margin="3" VerticalAlignment="Stretch" HorizontalScrollBarVisibility="Visible" VerticalScrollBarVisibility="Hidden">
+        <ScrollViewer Grid.Column="1" Grid.Row="9" Margin="3" VerticalAlignment="Stretch" HorizontalScrollBarVisibility="Visible" VerticalScrollBarVisibility="Hidden">
             <Canvas x:Name="MonthCanvas"  Background="Ivory" ></Canvas>
         </ScrollViewer>
 
-        <StackPanel Grid.Column="1" Grid.Row="8" Orientation="Horizontal">
+        <StackPanel Grid.Column="1" Grid.Row="10" Orientation="Horizontal">
             <TextBlock Foreground="SaddleBrown" FontFamily="Consolas" Margin="8 3 8 3">All-time bean balance</TextBlock>
             <TextBlock x:Name="TotalBalanceTextBlock" Foreground="DarkSlateBlue" FontFamily="Consolas" Margin="8 3 8 3"></TextBlock>
         </StackPanel>
         
-        <ScrollViewer Grid.Column="1" Grid.Row="9" Margin="3" VerticalAlignment="Stretch" HorizontalScrollBarVisibility="Visible" VerticalScrollBarVisibility="Hidden">
+        <ScrollViewer Grid.Column="1" Grid.Row="11" Margin="3" VerticalAlignment="Stretch" HorizontalScrollBarVisibility="Visible" VerticalScrollBarVisibility="Hidden">
             <Canvas x:Name="TotalCanvas"  Background="Ivory" ></Canvas>
         </ScrollViewer>
         

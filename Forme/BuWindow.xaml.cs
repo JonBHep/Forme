@@ -47,7 +47,7 @@ namespace Jbh
 
             double perweek =7* pasbuBeans/(double)(buBeans+pasbuBeans);
 
-            RubricTextBlock.Text = $"For every day on which I don't drink, {BeanString(pasbuBeans)} {AreString(pasbuBeans)} put into the pot. For every day on which I do drink, {BeanString(buBeans)} {AreString(buBeans)} taken out of the pot. The aim is to keep the number of beans in the pot positive. This equates to {perweek} drinking days per week.";
+            RubricTextBlock.Text = $"For every day on which I don't drink, {BeanString(pasbuBeans)} {AreString(pasbuBeans)} put into the pot. For every day on which I do drink, {BeanString(buBeans)} {AreString(buBeans)} taken out of the pot. The aim is to keep the number of beans in the pot positive. {perweek} drinking days per week will keep the beans steady.";
             CycleBorder.Visibility = Visibility.Hidden;
             LoadData();
         }
@@ -159,6 +159,8 @@ namespace Jbh
             PlotRecentDays();
             int z = PlotRollingPeriod(WeekCanvas, 7);
             WeeklyBalanceTextBlock.Text = $"{z}";
+            z = PlotRollingPeriod(FortnightCanvas, 14);
+            FortnightlyBalanceTextBlock.Text = $"{z}";
             z = PlotRollingPeriod(MonthCanvas, 28);
             MonthlyBalanceTextBlock.Text = $"{z}";
             z = PlotRollingPeriod(TotalCanvas, 99999);
@@ -169,7 +171,7 @@ namespace Jbh
         {
             RecentDaysDockPanel.Children.Clear();
             int currentcode = BuDate.DayOfLife(DateTime.Today);
-            for (int z=0; z<56; z++)
+            for (int z=0; z<77; z++)
             {
                 currentcode--;
                 Brush pinceau;
@@ -181,12 +183,18 @@ namespace Jbh
                         case BuDate.Ivresse.PasBu: { pinceau = Brushes.ForestGreen; break; }
                         default: { pinceau = Brushes.Silver; break; }
                     }
-                    Ellipse elly = new Ellipse() { Width = 16, Height = 16, Fill = pinceau, Margin=new Thickness(4,2,0,2), VerticalAlignment = VerticalAlignment.Center };
+                    Ellipse elly = new Ellipse() { Width = 16, Height = 16, Fill = pinceau, Margin=new Thickness(2,2,2,2), VerticalAlignment = VerticalAlignment.Center };
                     DockPanel.SetDock(elly, Dock.Right);
                     RecentDaysDockPanel.Children.Add(elly);
+                    if (z % 7 == 6)
+                    {
+                        // week marker 
+                        Rectangle rect = new Rectangle() { Width = 2, Height = 16, Fill = Brushes.DarkSlateGray, Margin = new Thickness(1, 2, 1, 2) };
+                        DockPanel.SetDock(rect, Dock.Right);
+                        RecentDaysDockPanel.Children.Add(rect);
+                    }
                 }
             }
-
         }
 
         private int PlotRollingPeriod(Canvas whichCanvas, int spanDays)
