@@ -76,20 +76,17 @@ namespace Jbh
 
         private bool CheckStonePoundInput()
         {
-            int s;
-            int p;
-            double v;
             bool OkInput = true;
             string StString = textboxInputStones.Text;
             if (string.IsNullOrWhiteSpace(StString)) { OkInput = false; }
-            if (int.TryParse(StString, out s) == false) { OkInput = false; }
+            if (int.TryParse(StString, out int s) == false) { OkInput = false; }
             string PdString = textboxInputPounds.Text;
             if (string.IsNullOrWhiteSpace(PdString)) { OkInput = false; }
-            if (int.TryParse(PdString, out p) == false) { OkInput = false; }
+            if (int.TryParse(PdString, out int p) == false) { OkInput = false; }
             if (OkInput)
             {
                 if (p > 13) { OkInput = false; }
-                v = p + (s * 14); // pounds
+                double v = p + (s * 14);
                 v *= 0.45359237f; // kilograms
                 InpKgrmSPd = v;
             }
@@ -98,15 +95,13 @@ namespace Jbh
 
         private bool CheckPoundInput()
         {
-            int p;
-            double v;
             bool OkInput = true;
             string PdString = textboxInputPoundsOnly.Text;
             if (string.IsNullOrWhiteSpace(PdString)) { OkInput = false; }
-            if (int.TryParse(PdString, out p) == false) { OkInput = false; }
+            if (int.TryParse(PdString, out int p) == false) { OkInput = false; }
             if (OkInput)
             {
-                v = p * 0.45359237f; // kilograms
+                double v = p * 0.45359237f;
                 InpKgrmPds = v;
             }
             return OkInput;
@@ -114,11 +109,10 @@ namespace Jbh
 
         private bool CheckKiloInput()
         {
-            double v;
             bool OkInput = true;
             string KgString = textboxInpKg.Text;
             if (string.IsNullOrWhiteSpace(KgString)) { OkInput = false; }
-            if (double.TryParse(KgString, out v) == false) { OkInput = false; }
+            if (double.TryParse(KgString, out double v) == false) { OkInput = false; }
             if (OkInput)
             {
                 InpKgrmKgm = v;

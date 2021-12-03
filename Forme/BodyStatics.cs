@@ -39,7 +39,7 @@ namespace Jbh
             int feet = (int)Math.Floor(inches / 12f);
             int usedinches = feet * 12;
             double ins = inches - usedinches;
-            return $"{feet} ft {ins.ToString("0.0")} in";
+            return $"{feet} ft {ins:0.0} in";
         }
 
         public static double BmiOf(double Kg, double MyHeightInMetres)
