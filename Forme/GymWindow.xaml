@@ -50,7 +50,7 @@
                             <RadioButton x:Name="GymRadio" VerticalAlignment="Center" Margin="0 0 10 0" Width="100">Gym training</RadioButton>
                             <RadioButton x:Name="AquaRadio" VerticalAlignment="Center" Margin="0 0 10 0" Width="100">Aqua aerobics</RadioButton>
                             <RadioButton x:Name="OtherRadio" VerticalAlignment="Center" Margin="0 0 10 0" Width="100">Other activity</RadioButton>
-                            <DatePicker x:Name="GymDatePicker" VerticalAlignment="Center" Width="200" Margin="0 0 10 0"></DatePicker>
+                            <DatePicker x:Name="GymDatePicker" IsTodayHighlighted="True" VerticalAlignment="Center" Width="200" Margin="0 0 10 0"></DatePicker>
                             <Button VerticalAlignment="Center"  Padding="12 3" MinWidth="80" FontWeight="Medium" Margin="0 0 10 0" Click="AddConfirmButton_Click">OK</Button>
                             <Button VerticalAlignment="Center"  Padding="12 3" MinWidth="80" Click="AddCancelButton_Click">Cancel</Button>
                         </StackPanel>
