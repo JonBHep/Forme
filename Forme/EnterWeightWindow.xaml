@@ -18,35 +18,39 @@
             <RowDefinition></RowDefinition>
             <RowDefinition></RowDefinition>
             <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
             <RowDefinition Height="Auto"></RowDefinition>
         </Grid.RowDefinitions>
         <TextBlock Margin="8 4" FontWeight="Medium">Date</TextBlock>
         <TextBlock Grid.Row="1" Margin="8 4" FontWeight="Medium">Weight</TextBlock>
         <DatePicker x:Name="datepickerDate" VerticalAlignment="Top" Grid.Column="1" Margin="8 4" SelectedDateChanged="datepickerDate_SelectedDateChanged"></DatePicker>
-        <StackPanel Grid.Column="1" Grid.Row="1" Orientation="Horizontal">
-            <TextBox x:Name="textboxInputStones" Margin="8 4" Width="40" VerticalAlignment="Top" TextChanged="textboxInputStones_TextChanged"></TextBox>
-            <TextBlock Margin="8 4">stone</TextBlock>
-            <TextBox x:Name="textboxInputPounds" Margin="8 4" Width="40" VerticalAlignment="Top" TextChanged="textboxInputPounds_TextChanged"></TextBox>
-            <TextBlock Margin="8 4">pounds</TextBlock>
-        </StackPanel>
         <StackPanel Grid.Column="1" Grid.Row="2" Orientation="Horizontal">
-            <TextBox x:Name="textboxInputPoundsOnly" Margin="8 4" Width="40" VerticalAlignment="Top" TextChanged="textboxInputPoundsOnly_TextChanged"></TextBox>
+            <TextBlock x:Name="textboxInputStones" Margin="8 4" Width="40" VerticalAlignment="Top"></TextBlock>
+            <TextBlock Margin="8 4">stone</TextBlock>
+            <TextBlock x:Name="textboxInputPounds" Margin="8 4" Width="40" VerticalAlignment="Top"></TextBlock>
             <TextBlock Margin="8 4">pounds</TextBlock>
         </StackPanel>
         <StackPanel Grid.Column="1" Grid.Row="3" Orientation="Horizontal">
+            <TextBlock x:Name="textboxInputPoundsOnly" Margin="8 4" Width="40" VerticalAlignment="Top"></TextBlock>
+            <TextBlock Margin="8 4">pounds</TextBlock>
+        </StackPanel>
+        <StackPanel Grid.Column="1" Grid.Row="1" Orientation="Horizontal">
             <TextBox x:Name="textboxInpKg" Margin="8 4" Width="40" VerticalAlignment="Top" TextChanged="textboxInpKg_TextChanged"></TextBox>
             <TextBlock Margin="8 4">kilograms</TextBlock>
         </StackPanel>
-        <Button x:Name="buttonStPdOkay" Grid.Column="2" Grid.Row="1" Margin="8 4" Width="60" HorizontalAlignment="Left" VerticalAlignment="Top" Click="buttonStPdOkay_Click">OK</Button>
-        <Button x:Name="buttonLbOkay" Grid.Column="2" Grid.Row="2" Margin="8 4" Width="60" HorizontalAlignment="Left" VerticalAlignment="Top" Click="buttonLbOkay_Click">OK</Button>
-        <Button x:Name="buttonKgOkay" Grid.Column="2" Grid.Row="3" Margin="8 4" Width="60" HorizontalAlignment="Left" VerticalAlignment="Top" Click="buttonKgOkay_Click">OK</Button>
+        <!--<Button x:Name="buttonStPdOkay" Grid.Column="2" Grid.Row="1" Margin="8 4" Width="60" HorizontalAlignment="Left" VerticalAlignment="Top" Click="buttonStPdOkay_Click">OK</Button>-->
+        <!--<Button x:Name="buttonLbOkay" Grid.Column="2" Grid.Row="2" Margin="8 4" Width="60" HorizontalAlignment="Left" VerticalAlignment="Top" Click="buttonLbOkay_Click">OK</Button>-->
+        <!--<Button x:Name="buttonKgOkay" Grid.Column="2" Grid.Row="1" Margin="8 4" Width="60" HorizontalAlignment="Left" VerticalAlignment="Top" Click="buttonKgOkay_Click">OK</Button>-->
         <TextBlock Grid.Column="2" Grid.Row="4" VerticalAlignment="Top" TextAlignment="Center" Margin="4">BMI</TextBlock>
         <TextBlock x:Name="textblockResultDate" Grid.Column="3" Margin="8 4">xxx</TextBlock>
-        <TextBlock x:Name="textblockResultStLb" Grid.Column="3" Grid.Row="1" Margin="8 4">xxx</TextBlock>
-        <TextBlock x:Name="textblockResultPounds" Grid.Column="3" Grid.Row="2" Margin="8 4">xxx</TextBlock>
-        <TextBlock x:Name="textblockResultKilos" Grid.Column="3" Grid.Row="3" Margin="8 4">xxx</TextBlock>
+        <TextBlock x:Name="textblockResultKilos" Grid.Column="3" Grid.Row="1" Margin="8 4">xxx</TextBlock>
+        <TextBlock x:Name="textblockResultStLb" Grid.Column="3" Grid.Row="2" Margin="8 4">xxx</TextBlock>
+        <TextBlock x:Name="textblockResultPounds" Grid.Column="3" Grid.Row="3" Margin="8 4">xxx</TextBlock>
         <TextBlock x:Name="textblockResultBMI" Grid.Column="3" Grid.Row="4" Margin="8 4">xxx</TextBlock>
-        <StackPanel Grid.Column="3" Grid.Row="4">
+        <StackPanel Grid.Column="3" Grid.Row="5" Orientation="Horizontal">
             <Button x:Name="buttonSave" Width="80" Margin="8 4" HorizontalAlignment="Right" FontWeight="Bold" Click="buttonSave_Click">Save</Button>
             <Button x:Name="buttonCancel" Width="80" Margin="8 4" HorizontalAlignment="Right" IsCancel="True" Click="buttonCancel_Click">Cancel</Button>
         </StackPanel>

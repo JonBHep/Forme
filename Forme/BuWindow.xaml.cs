@@ -171,7 +171,7 @@ namespace Jbh
             {
                 lastDate = DateTime.Today.AddDays(-1);
                 lastDol = BuDate.DayOfLife(lastDate);
-                UntilTextBlock.Text = "Graphics up to  YESTERDAY";
+                UntilTextBlock.Text = "Graphics up to YESTERDAY";
             }
 
             double elapsedDays = (lastDate - startDate).TotalDays+1;

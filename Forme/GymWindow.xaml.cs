@@ -242,7 +242,7 @@ namespace Jbh
             GymDatePicker.DisplayDateStart = new DateTime(2019, 12, 1);
             GymDatePicker.DisplayDateEnd = DateTime.Today;
             GymDatePicker.SelectedDate = DateTime.Today;
-            GymRadio.IsChecked = true;
+            OtherRadio.IsChecked = true;
         }
 
         private void AddCancelButton_Click(object sender, RoutedEventArgs e)
@@ -300,8 +300,10 @@ namespace Jbh
             GraphCanvasSess.Children.Clear();
             DateTime moment = new DateTime(2019, 12, 16);
             int daysago = (int)Math.Floor((DateTime.Today - moment).TotalDays);
-            double fourLeft = daywidth * (daysago - 25);
-            double weekLeft = daywidth * (daysago - 4);
+            //double fourLeft = daywidth * (daysago - 25);
+            //double weekLeft = daywidth * (daysago - 4);
+            double fourLeft = daywidth * (daysago - 27);
+            double weekLeft = daywidth * (daysago - 6);
             Rectangle fourrect = new Rectangle() { Width = daywidth * 28, Height = GraphCanvasSess.ActualHeight, Fill = Brushes.BurlyWood, Opacity=0.4 };
             Rectangle weekrect = new Rectangle() { Width = daywidth * 7, Height = GraphCanvasSess.ActualHeight, Fill = Brushes.BurlyWood , Opacity=0.7};
             Canvas.SetLeft(fourrect, fourLeft);
@@ -316,7 +318,8 @@ namespace Jbh
             Canvas.SetLeft(explain1TB, weekLeft);
             Canvas.SetTop(explain1TB, 30);
             GraphCanvasSess.Children.Add(explain1TB);
-            double xpos = daywidth;
+            //double xpos = daywidth;
+            double xpos = 0;
             while (moment <= DateTime.Today)
             {
                 xpos += daywidth;
@@ -343,7 +346,7 @@ namespace Jbh
                             double ypos = 10;
                             GymVisit gv = daySessions[0];
 
-                            Brush pinceau =ActivityBrush(gv.Activity);
+                            Brush pinceau = ActivityBrush(gv.Activity);
                             Rectangle carre = new Rectangle() { Height = 12, Width = daywidth - 0.5, Fill = pinceau };
                             Canvas.SetLeft(carre, xpos);
                             Canvas.SetTop(carre, ypos);
@@ -465,7 +468,7 @@ namespace Jbh
             PlotPerformance(daywidth, gch, yHeight, GraphCanvasWeek, ActivityBrush(GymHistory.GymType.Other), weekliesGAO);
             PlotPerformance(daywidth, gch, yHeight, GraphCanvasWeek, ActivityBrush(GymHistory.GymType.AquaAerobics), weekliesGA);
             PlotPerformance(daywidth, gch, yHeight, GraphCanvasWeek, ActivityBrush(GymHistory.GymType.GymTraining), weekliesG);
-            
+
             PlotPerformance(daywidth, gch, yHeight, GraphCanvasMnth, ActivityBrush(GymHistory.GymType.Other), mnthliesGAO);
             PlotPerformance(daywidth, gch, yHeight, GraphCanvasMnth, ActivityBrush(GymHistory.GymType.AquaAerobics), mnthliesGA);
             PlotPerformance(daywidth, gch, yHeight, GraphCanvasMnth, ActivityBrush(GymHistory.GymType.GymTraining), mnthliesG);
@@ -477,14 +480,13 @@ namespace Jbh
 
         private void PlotPerformance(double DayWidth, double GraphHeight, double IncrementHeight, Canvas Slate, Brush pinceau, List<Tuple<DateTime, double>> data)
         {
-            double xpos = DayWidth;
+            double xpos = 0;
             int counter = data.Count;
             foreach (Tuple<DateTime, double> tup in data)
             {
                 xpos += DayWidth;
                 double ypos = GraphHeight - (IncrementHeight * tup.Item2);
                 Point next = new Point() { X = xpos, Y = ypos };
-                //double opaqueness = (donotdim ||(counter < 8)) ? 0.9 : 0.5;
                 Rectangle rex = new Rectangle() { Fill = pinceau, Width = DayWidth, Height = IncrementHeight * tup.Item2, Opacity=0.7 };
                 Canvas.SetLeft(rex, xpos);
                 Canvas.SetTop(rex, ypos);
@@ -562,6 +564,28 @@ namespace Jbh
         private void AddAvanthierButton_Click(object sender, RoutedEventArgs e)
         {
             GymDatePicker.SelectedDate = DateTime.Today.AddDays(-2);
+        }
+
+        private void AddBackwardButton_Click(object sender, RoutedEventArgs e)
+        {
+            DateTime when = DateTime.Today;
+            if (GymDatePicker.SelectedDate.HasValue)
+            {
+                when = GymDatePicker.SelectedDate.Value;
+            }
+
+            GymDatePicker.SelectedDate = when.AddDays(-1);
+        }
+
+        private void AddForwardsButton_Click(object sender, RoutedEventArgs e)
+        {
+            DateTime when = DateTime.Today;
+            if (GymDatePicker.SelectedDate.HasValue)
+            {
+                when = GymDatePicker.SelectedDate.Value;
+            }
+
+            GymDatePicker.SelectedDate = when.AddDays(1);
         }
     }
 }

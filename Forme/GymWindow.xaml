@@ -51,16 +51,17 @@
                             <RadioButton x:Name="AquaRadio" VerticalAlignment="Center" Margin="0 0 10 0" Width="100">Aqua aerobics</RadioButton>
                             <RadioButton x:Name="OtherRadio" VerticalAlignment="Center" Margin="0 0 10 0" Width="100">Other activity</RadioButton>
                             <DatePicker x:Name="GymDatePicker" VerticalAlignment="Center" Width="200" Margin="0 0 10 0"></DatePicker>
-                            <Button x:Name="AddConfirmButton" VerticalAlignment="Center"  Padding="12 3" MinWidth="80" FontWeight="Medium" Margin="0 0 10 0" Click="AddConfirmButton_Click">OK</Button>
-                            <Button x:Name="AddCancelButton" VerticalAlignment="Center"  Padding="12 3" MinWidth="80" Click="AddCancelButton_Click">Cancel</Button>
+                            <Button VerticalAlignment="Center"  Padding="12 3" MinWidth="80" FontWeight="Medium" Margin="0 0 10 0" Click="AddConfirmButton_Click">OK</Button>
+                            <Button VerticalAlignment="Center"  Padding="12 3" MinWidth="80" Click="AddCancelButton_Click">Cancel</Button>
                         </StackPanel>
                         <StackPanel Orientation="Horizontal" Margin="220 12 0 0">
                             <Button VerticalAlignment="Center" Padding="12 3" MinWidth="80" FontWeight="Medium" Margin="0 0 10 0" Click="AddTodayButton_Click">Today</Button>
                             <Button VerticalAlignment="Center" Padding="12 3" MinWidth="80" FontWeight="Medium" Margin="0 0 10 0" Click="AddYesterdayButton_Click">Yesterday</Button>
                             <Button VerticalAlignment="Center" Padding="12 3" MinWidth="80" FontWeight="Medium" Margin="0 0 10 0" ToolTip="The day before yesterday" Click="AddAvanthierButton_Click">Avant-hier</Button>
+                            <Button VerticalAlignment="Center" Padding="12 3" MinWidth="80" FontWeight="Medium" Margin="0 0 10 0" ToolTip="The day before yesterday" Click="AddBackwardButton_Click" Content="◄◄"></Button>
+                            <Button VerticalAlignment="Center" Padding="12 3" MinWidth="80" FontWeight="Medium" Margin="0 0 10 0" ToolTip="The day before yesterday" Click="AddForwardsButton_Click" Content="►►"></Button>
                         </StackPanel>
                     </StackPanel>
-                    
                     
                 </Grid>
             </Grid>
